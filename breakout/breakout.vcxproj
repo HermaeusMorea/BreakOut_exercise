@@ -144,6 +144,7 @@
     <ClCompile Include="src\program.cpp" />
     <ClCompile Include="src\resource_manager.cpp" />
     <ClCompile Include="src\shader.cpp" />
+    <ClCompile Include="src\sprite_renderer.cpp" />
     <ClCompile Include="src\stb_image.cpp" />
     <ClCompile Include="src\texture.cpp" />
   </ItemGroup>
@@ -151,7 +152,15 @@
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\resource_manager.h" />
     <ClInclude Include="src\shader.h" />
+    <ClInclude Include="src\sprite_renderer.h" />
     <ClInclude Include="src\texture.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shaders\sprite.frag" />
+    <None Include="shaders\sprite.vs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="textures\awesomeface.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
