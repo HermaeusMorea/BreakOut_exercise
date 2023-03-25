@@ -84,19 +84,16 @@
     <None Include="levels\four.lvl" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="textures\awesomeface.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="textures\block_solid.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="textures\block.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="textures\paddle.png">
+    <Image Include="textures\background.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="textures\background.jpg">
+    <Image Include="textures\snowball.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
