@@ -140,6 +140,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\game.cpp" />
+    <ClCompile Include="src\game_level.cpp" />
+    <ClCompile Include="src\game_object.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\program.cpp" />
     <ClCompile Include="src\resource_manager.cpp" />
@@ -150,17 +152,25 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game.h" />
+    <ClInclude Include="src\game_level.h" />
+    <ClInclude Include="src\game_object.h" />
     <ClInclude Include="src\resource_manager.h" />
     <ClInclude Include="src\shader.h" />
     <ClInclude Include="src\sprite_renderer.h" />
     <ClInclude Include="src\texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="levels\four.lvl" />
+    <None Include="levels\one.lvl" />
+    <None Include="levels\three.lvl" />
+    <None Include="levels\two.lvl" />
     <None Include="shaders\sprite.frag" />
     <None Include="shaders\sprite.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\awesomeface.png" />
+    <Image Include="textures\block.png" />
+    <Image Include="textures\block_solid.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
