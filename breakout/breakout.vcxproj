@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ball_object.cpp" />
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\game_level.cpp" />
     <ClCompile Include="src\game_object.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="src\texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ball_object.h" />
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\game_level.h" />
     <ClInclude Include="src\game_object.h" />
@@ -169,8 +171,10 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\awesomeface.png" />
+    <Image Include="textures\background.jpg" />
     <Image Include="textures\block.png" />
     <Image Include="textures\block_solid.png" />
+    <Image Include="textures\paddle.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
