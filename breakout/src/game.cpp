@@ -14,7 +14,6 @@ GameObject* Player;
 BallObject* Ball;
 ParticleGenerator* Particles;
 PostProcessor* Effects;
-
 float ShakeTime = 0.0f;
 
 Game::Game(unsigned int width, unsigned int height)
