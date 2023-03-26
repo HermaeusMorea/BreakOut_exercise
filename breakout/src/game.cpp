@@ -33,7 +33,7 @@ void Game::Init()
     ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
     // set render-specific controls
     Shader sprite_shader =ResourceManager::GetShader("sprite");
-        Renderer = new SpriteRenderer(sprite_shader);
+     Renderer = new SpriteRenderer(sprite_shader);
     //Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
     // load textures
     ResourceManager::LoadTexture("textures/background.jpg", false, "background");
