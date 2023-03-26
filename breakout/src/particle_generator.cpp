@@ -1,3 +1,5 @@
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include "particle_generator.h"
 
 ParticleGenerator::ParticleGenerator(Shader shader, Texture2D texture, unsigned int amount)
@@ -38,6 +40,13 @@ void ParticleGenerator::Draw()
         if (particle.Life > 0.0f)
         {
             this->shader.SetVector2f("offset", particle.Position);
+
+            // Calculate color using a sine function
+            float r = 0.5f + 0.5f * sin(5.0f * glfwGetTime() + 0.0f);
+            float g = 0.5f + 0.5f * sin(5.0f * glfwGetTime() + 2.0f);
+            float b = 0.5f + 0.5f * sin(5.0f * glfwGetTime() + 4.0f);
+            particle.Color = glm::vec4(r, g, b, 1.0f);
+
             this->shader.SetVector4f("color", particle.Color);
             this->texture.Bind();
             glBindVertexArray(this->VAO);
@@ -107,6 +116,6 @@ void ParticleGenerator::respawnParticle(Particle& particle, GameObject& object, 
     float rColor = 0.5f + ((rand() % 100) / 100.0f);
     particle.Position = object.Position + random + offset;
     particle.Color = glm::vec4(rColor, rColor, rColor, 1.0f);
-    particle.Life = 1.0f;
+    particle.Life = 0.3f;
     particle.Velocity = object.Velocity * 0.1f;
 }
