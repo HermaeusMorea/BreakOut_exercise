@@ -183,6 +183,7 @@
     <Image Include="textures\block_solid.png" />
     <Image Include="textures\awesomeface.png" />
     <Image Include="textures\paddle.png" />
+    <Image Include="textures\particle.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
