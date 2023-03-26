@@ -194,8 +194,11 @@ void Game::DoCollisions()
             if (std::get<0>(collision)) // if collision is true
             {
                 // destroy block if not solid
-                if (!box.IsSolid)
+                if (!box.IsSolid) {
                     box.Destroyed = true;
+                    ShakeTime = 0.05f;
+                    Effects->Shake = true;
+                }
                 else
                 {   // if block is solid, enable shake effect
                     ShakeTime = 0.05f;
