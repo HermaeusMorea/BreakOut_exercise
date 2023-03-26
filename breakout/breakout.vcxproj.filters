@@ -48,6 +48,12 @@
     <ClCompile Include="src\ball_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\particle_generator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\post_processor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game.h">
@@ -74,6 +80,18 @@
     <ClInclude Include="src\ball_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\particle_generator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\post_processor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\power_up.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\includes\stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\sprite.vs" />
@@ -82,6 +100,10 @@
     <None Include="levels\two.lvl" />
     <None Include="levels\three.lvl" />
     <None Include="levels\four.lvl" />
+    <None Include="shaders\particle.frag" />
+    <None Include="shaders\particle.vs" />
+    <None Include="shaders\post_processing.frag" />
+    <None Include="shaders\post_processing.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\block_solid.png">
@@ -93,8 +115,36 @@
     <Image Include="textures\background.jpg">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="textures\snowball.png">
+    <Image Include="textures\awesomeface.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="textures\paddle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\particle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\powerup_chaos.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\powerup_confuse.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\powerup_increase.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\powerup_passthrough.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\powerup_speed.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="textures\powerup_sticky.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Dependencies\lib\glew32s.lib" />
+    <Library Include="Dependencies\lib\glfw3.lib" />
   </ItemGroup>
 </Project>
