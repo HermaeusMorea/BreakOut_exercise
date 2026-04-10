@@ -1,11 +1,19 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <memory>
+#include <vector>
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "game_level.h"
-#include "power_up.h"
+#include "breakout/core/ball_object.h"
+#include "breakout/core/game_level.h"
+#include "breakout/core/game_object.h"
+#include "breakout/core/power_up.h"
+#include "breakout/rendering/particle_generator.h"
+#include "breakout/rendering/post_processor.h"
+#include "breakout/rendering/sprite_renderer.h"
 
 // Represents the current state of the game
 enum GameState {
@@ -62,6 +70,16 @@ public:
     // powerups
     void SpawnPowerUps(GameObject& block);
     void UpdatePowerUps(float dt);
+private:
+    std::unique_ptr<SpriteRenderer> renderer_;
+    std::unique_ptr<GameObject> player_;
+    std::unique_ptr<BallObject> ball_;
+    std::unique_ptr<ParticleGenerator> particles_;
+    std::unique_ptr<PostProcessor> effects_;
+    float shake_time_ = 0.0f;
+
+    void ActivatePowerUp(PowerUp& powerUp);
+    bool IsOtherPowerUpActive(const std::string& type) const;
 };
 
 #endif

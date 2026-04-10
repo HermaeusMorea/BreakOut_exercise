@@ -4,9 +4,9 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
-#include "texture.h"
-#include "sprite_renderer.h"
-#include "shader.h"
+#include "breakout/rendering/shader.h"
+#include "breakout/rendering/sprite_renderer.h"
+#include "breakout/rendering/texture.h"
 
 
 // PostProcessor hosts all PostProcessing effects for the Breakout

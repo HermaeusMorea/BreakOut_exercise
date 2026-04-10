@@ -5,7 +5,7 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
-#include "game_object.h"
+#include "breakout/core/game_object.h"
 
 
 // The size of a PowerUp block

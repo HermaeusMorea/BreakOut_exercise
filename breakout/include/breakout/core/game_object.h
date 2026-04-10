@@ -4,8 +4,8 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
-#include "texture.h"
-#include "sprite_renderer.h"
+#include "breakout/rendering/sprite_renderer.h"
+#include "breakout/rendering/texture.h"
 
 
 // Container object for holding all state relevant for a single

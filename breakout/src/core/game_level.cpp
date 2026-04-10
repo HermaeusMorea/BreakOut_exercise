@@ -1,8 +1,9 @@
-#include "game_level.h"
+#include "breakout/assets/asset_manager.h"
+#include "breakout/assets/asset_paths.h"
+#include "breakout/core/game_level.h"
 
 #include <fstream>
 #include <sstream>
-
 
 void GameLevel::Load(const char* file, unsigned int levelWidth, unsigned int levelHeight)
 {
@@ -12,7 +13,7 @@ void GameLevel::Load(const char* file, unsigned int levelWidth, unsigned int lev
     unsigned int tileCode;
     GameLevel level;
     std::string line;
-    std::ifstream fstream(file);
+    std::ifstream fstream(AssetPaths::Resolve(file));
     std::vector<std::vector<unsigned int>> tileData;
     if (fstream)
     {
@@ -60,7 +61,7 @@ void GameLevel::init(std::vector<std::vector<unsigned int>> tileData, unsigned i
             {
                 glm::vec2 pos(unit_width * x, unit_height * y);
                 glm::vec2 size(unit_width, unit_height);
-                GameObject obj(pos, size, ResourceManager::GetTexture("block_solid"), glm::vec3(0.8f, 0.8f, 0.7f));
+                GameObject obj(pos, size, AssetManager::GetTexture("block_solid"), glm::vec3(0.8f, 0.8f, 0.7f));
                 obj.IsSolid = true;
                 this->Bricks.push_back(obj);
             }
@@ -78,7 +79,7 @@ void GameLevel::init(std::vector<std::vector<unsigned int>> tileData, unsigned i
 
                 glm::vec2 pos(unit_width * x, unit_height * y);
                 glm::vec2 size(unit_width, unit_height);
-                this->Bricks.push_back(GameObject(pos, size, ResourceManager::GetTexture("block"), color));
+                this->Bricks.push_back(GameObject(pos, size, AssetManager::GetTexture("block"), color));
             }
         }
     }

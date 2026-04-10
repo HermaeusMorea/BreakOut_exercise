@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Dependencies\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)Dependencies\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -93,7 +93,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Dependencies\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)Dependencies\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,7 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Dependencies\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)Dependencies\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,7 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Dependencies\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)include;$(ProjectDir)Dependencies\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,59 +139,61 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\ball_object.cpp" />
-    <ClCompile Include="src\game.cpp" />
-    <ClCompile Include="src\game_level.cpp" />
-    <ClCompile Include="src\game_object.cpp" />
-    <ClCompile Include="src\glad.c" />
-    <ClCompile Include="src\particle_generator.cpp" />
-    <ClCompile Include="src\post_processor.cpp" />
-    <ClCompile Include="src\program.cpp" />
-    <ClCompile Include="src\resource_manager.cpp" />
-    <ClCompile Include="src\shader.cpp" />
-    <ClCompile Include="src\sprite_renderer.cpp" />
-    <ClCompile Include="src\stb_image.cpp" />
-    <ClCompile Include="src\texture.cpp" />
+    <ClCompile Include="src\app\main.cpp" />
+    <ClCompile Include="src\assets\asset_manager.cpp" />
+    <ClCompile Include="src\assets\asset_paths.cpp" />
+    <ClCompile Include="src\core\ball_object.cpp" />
+    <ClCompile Include="src\core\game.cpp" />
+    <ClCompile Include="src\core\game_level.cpp" />
+    <ClCompile Include="src\core\game_object.cpp" />
+    <ClCompile Include="src\rendering\particle_generator.cpp" />
+    <ClCompile Include="src\rendering\post_processor.cpp" />
+    <ClCompile Include="src\rendering\shader.cpp" />
+    <ClCompile Include="src\rendering\sprite_renderer.cpp" />
+    <ClCompile Include="src\rendering\texture.cpp" />
+    <ClCompile Include="src\third_party\glad.c" />
+    <ClCompile Include="src\third_party\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dependencies\includes\stb_image.h" />
-    <ClInclude Include="src\ball_object.h" />
-    <ClInclude Include="src\game.h" />
-    <ClInclude Include="src\game_level.h" />
-    <ClInclude Include="src\game_object.h" />
-    <ClInclude Include="src\particle_generator.h" />
-    <ClInclude Include="src\post_processor.h" />
-    <ClInclude Include="src\power_up.h" />
-    <ClInclude Include="src\resource_manager.h" />
-    <ClInclude Include="src\shader.h" />
-    <ClInclude Include="src\sprite_renderer.h" />
-    <ClInclude Include="src\texture.h" />
+    <ClInclude Include="include\breakout\assets\asset_manager.h" />
+    <ClInclude Include="include\breakout\assets\asset_paths.h" />
+    <ClInclude Include="include\breakout\core\ball_object.h" />
+    <ClInclude Include="include\breakout\core\game.h" />
+    <ClInclude Include="include\breakout\core\game_level.h" />
+    <ClInclude Include="include\breakout\core\game_object.h" />
+    <ClInclude Include="include\breakout\core\power_up.h" />
+    <ClInclude Include="include\breakout\rendering\particle_generator.h" />
+    <ClInclude Include="include\breakout\rendering\post_processor.h" />
+    <ClInclude Include="include\breakout\rendering\shader.h" />
+    <ClInclude Include="include\breakout\rendering\sprite_renderer.h" />
+    <ClInclude Include="include\breakout\rendering\texture.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="levels\four.lvl" />
-    <None Include="levels\one.lvl" />
-    <None Include="levels\three.lvl" />
-    <None Include="levels\two.lvl" />
-    <None Include="shaders\particle.frag" />
-    <None Include="shaders\particle.vs" />
-    <None Include="shaders\post_processing.frag" />
-    <None Include="shaders\post_processing.vs" />
-    <None Include="shaders\sprite.frag" />
-    <None Include="shaders\sprite.vs" />
+    <None Include="assets\levels\four.lvl" />
+    <None Include="assets\levels\one.lvl" />
+    <None Include="assets\levels\three.lvl" />
+    <None Include="assets\levels\two.lvl" />
+    <None Include="assets\shaders\particle.frag" />
+    <None Include="assets\shaders\particle.vs" />
+    <None Include="assets\shaders\post_processing.frag" />
+    <None Include="assets\shaders\post_processing.vs" />
+    <None Include="assets\shaders\sprite.frag" />
+    <None Include="assets\shaders\sprite.vs" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="textures\background.jpg" />
-    <Image Include="textures\block.png" />
-    <Image Include="textures\block_solid.png" />
-    <Image Include="textures\awesomeface.png" />
-    <Image Include="textures\paddle.png" />
-    <Image Include="textures\particle.png" />
-    <Image Include="textures\powerup_chaos.png" />
-    <Image Include="textures\powerup_confuse.png" />
-    <Image Include="textures\powerup_increase.png" />
-    <Image Include="textures\powerup_passthrough.png" />
-    <Image Include="textures\powerup_speed.png" />
-    <Image Include="textures\powerup_sticky.png" />
+    <Image Include="assets\textures\background.jpg" />
+    <Image Include="assets\textures\block.png" />
+    <Image Include="assets\textures\block_solid.png" />
+    <Image Include="assets\textures\awesomeface.png" />
+    <Image Include="assets\textures\paddle.png" />
+    <Image Include="assets\textures\particle.png" />
+    <Image Include="assets\textures\powerup_chaos.png" />
+    <Image Include="assets\textures\powerup_confuse.png" />
+    <Image Include="assets\textures\powerup_increase.png" />
+    <Image Include="assets\textures\powerup_passthrough.png" />
+    <Image Include="assets\textures\powerup_speed.png" />
+    <Image Include="assets\textures\powerup_sticky.png" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Dependencies\lib\glew32s.lib" />

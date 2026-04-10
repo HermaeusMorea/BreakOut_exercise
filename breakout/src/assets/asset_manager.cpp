@@ -1,39 +1,44 @@
-#include "resource_manager.h"
+#include "breakout/assets/asset_manager.h"
 
+#include <filesystem>
 #include <iostream>
 #include <sstream>
 #include <fstream>
 
+#include "breakout/assets/asset_paths.h"
 #include "stb_image.h"
 
 // Instantiate static variables
-std::map<std::string, Texture2D>    ResourceManager::Textures;
-std::map<std::string, Shader>       ResourceManager::Shaders;
+std::map<std::string, Texture2D>    AssetManager::Textures;
+std::map<std::string, Shader>       AssetManager::Shaders;
 
 
-Shader ResourceManager::LoadShader(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile, std::string name)
+Shader AssetManager::LoadShader(const std::string& vShaderFile, const std::string& fShaderFile, const std::string& gShaderFile, std::string name)
 {
-    Shaders[name] = loadShaderFromFile(vShaderFile, fShaderFile, gShaderFile);
+    const std::filesystem::path vertexPath = AssetPaths::Resolve(vShaderFile);
+    const std::filesystem::path fragmentPath = AssetPaths::Resolve(fShaderFile);
+    const std::filesystem::path geometryPath = gShaderFile.empty() ? std::filesystem::path() : AssetPaths::Resolve(gShaderFile);
+    Shaders[name] = loadShaderFromFile(vertexPath, fragmentPath, gShaderFile.empty() ? nullptr : &geometryPath);
     return Shaders[name];
 }
 
-Shader ResourceManager::GetShader(std::string name)
+Shader AssetManager::GetShader(const std::string& name)
 {
     return Shaders[name];
 }
 
-Texture2D ResourceManager::LoadTexture(const char* file, bool alpha, std::string name)
+Texture2D AssetManager::LoadTexture(const std::string& file, bool alpha, std::string name)
 {
-    Textures[name] = loadTextureFromFile(file, alpha);
+    Textures[name] = loadTextureFromFile(AssetPaths::Resolve(file), alpha);
     return Textures[name];
 }
 
-Texture2D ResourceManager::GetTexture(std::string name)
+Texture2D AssetManager::GetTexture(const std::string& name)
 {
     return Textures[name];
 }
 
-void ResourceManager::Clear()
+void AssetManager::Clear()
 {
     // (properly) delete all shaders	
     for (auto iter : Shaders)
@@ -43,7 +48,7 @@ void ResourceManager::Clear()
         glDeleteTextures(1, &iter.second.ID);
 }
 
-Shader ResourceManager::loadShaderFromFile(const char* vShaderFile, const char* fShaderFile, const char* gShaderFile)
+Shader AssetManager::loadShaderFromFile(const std::filesystem::path& vShaderFile, const std::filesystem::path& fShaderFile, const std::filesystem::path* gShaderFile)
 {
     // 1. retrieve the vertex/fragment source code from filePath
     std::string vertexCode;
@@ -67,7 +72,7 @@ Shader ResourceManager::loadShaderFromFile(const char* vShaderFile, const char* 
         // if geometry shader path is present, also load a geometry shader
         if (gShaderFile != nullptr)
         {
-            std::ifstream geometryShaderFile(gShaderFile);
+            std::ifstream geometryShaderFile(*gShaderFile);
             std::stringstream gShaderStream;
             gShaderStream << geometryShaderFile.rdbuf();
             geometryShaderFile.close();
@@ -87,7 +92,7 @@ Shader ResourceManager::loadShaderFromFile(const char* vShaderFile, const char* 
     return shader;
 }
 
-Texture2D ResourceManager::loadTextureFromFile(const char* file, bool alpha)
+Texture2D AssetManager::loadTextureFromFile(const std::filesystem::path& file, bool alpha)
 {
     // create texture object
     Texture2D texture;
@@ -98,7 +103,7 @@ Texture2D ResourceManager::loadTextureFromFile(const char* file, bool alpha)
     }
     // load image
     int width, height, nrChannels;
-    unsigned char* data = stbi_load(file, &width, &height, &nrChannels, 0);
+    unsigned char* data = stbi_load(file.string().c_str(), &width, &height, &nrChannels, 0);
     // now generate texture
     texture.Generate(width, height, data);
     // and finally free image data

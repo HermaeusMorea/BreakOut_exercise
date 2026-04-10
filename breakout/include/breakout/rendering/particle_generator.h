@@ -5,9 +5,9 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
-#include "shader.h"
-#include "texture.h"
-#include "game_object.h"
+#include "breakout/core/game_object.h"
+#include "breakout/rendering/shader.h"
+#include "breakout/rendering/texture.h"
 
 
 // Represents a single particle and its state

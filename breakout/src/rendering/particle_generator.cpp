@@ -1,6 +1,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "particle_generator.h"
+#include "breakout/rendering/particle_generator.h"
 
 ParticleGenerator::ParticleGenerator(Shader shader, Texture2D texture, unsigned int amount)
     : shader(shader), texture(texture), amount(amount)

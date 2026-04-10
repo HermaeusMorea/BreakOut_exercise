@@ -4,8 +4,8 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 
-#include "game_object.h"
-#include "texture.h"
+#include "breakout/core/game_object.h"
+#include "breakout/rendering/texture.h"
 
 
 // BallObject holds the state of the Ball object inheriting

@@ -1,8 +1,9 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "game.h"
-#include "resource_manager.h"
+#include "breakout/assets/asset_manager.h"
+#include "breakout/assets/asset_paths.h"
+#include "breakout/core/game.h"
 
 #include <iostream>
 
@@ -19,6 +20,8 @@ Game Breakout(SCREEN_WIDTH, SCREEN_HEIGHT);
 
 int main(int argc, char* argv[])
 {
+    AssetPaths::Initialize(argc > 0 ? argv[0] : nullptr);
+
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -85,7 +88,7 @@ int main(int argc, char* argv[])
 
     // delete all resources as loaded using the resource manager
     // ---------------------------------------------------------
-    ResourceManager::Clear();
+    AssetManager::Clear();
 
     glfwTerminate();
     return 0;
